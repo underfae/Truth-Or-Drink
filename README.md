@@ -13,6 +13,18 @@ This game is an answer for every  students' needs. It's a variant of popular gam
 
 ## Technologies
 
-ANGULAR, JS, SCSS, FIREBASE
+- [Angular] - the modern web developer's platform
+- [Angular Materials] - great UI boilerplate for modern web apps
+- [Firebase] - platform developed by Google for creating mobile and web applications
+- [JS] - lightweight, interpreted, or just-in-time compiled programming language
+- [Scss] - the most mature, stable, and powerful professional grade CSS extension language 
+
 
 ##  How to run a application? 
+
+
+   [Angular]: <https://angular.io>
+   [Angular Materials]: <https://material.angular.io>
+   [Firebase]: <https://firebase.google.com/docs>
+   [JS]: <https://developer.mozilla.org/pl/docs/Web/JavaScript>   
+   [Scss]: <https://sass-lang.com>
