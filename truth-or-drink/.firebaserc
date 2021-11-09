@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "truth-or-drink-afb08": {
+      "hosting": {
+        "truth-or-drink": [
+          "truth-or-drink-afb08"
+        ]
+      }
+    }
+  }
+}

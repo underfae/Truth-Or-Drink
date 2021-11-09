@@ -1,0 +1,92 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  .wrapper {
+    width: 95%;
+    height: 95%;
+    display: flex;
+    flex-direction: row;
+    .left-side {
+      justify-content: space-evenly;
+      padding: 15px;
+      height: 100%;
+      width: 40%;
+      background: linear-gradient(to left,  #f6b420, #ef6e0e);
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      img {
+        width: 400px;
+        height: auto;
+      }
+
+      .game-title{
+        font-family: "Bangers", Arial;
+        color: white;
+        font-size: 55px;
+      }
+
+      button {
+        font-family: "Bangers", Arial;
+        width: 150px;
+        height: 40px;
+        font-size: 30px;
+      }
+
+      .login-info {
+        font-family: Arial, sans-serif;
+        font-size: 24px;
+        color: white;
+      }
+
+      .socials {
+        a {
+          color: white;
+          margin: 0 24px;
+          text-decoration: none;
+        }
+      }
+    }
+
+    .right-side {
+      width: 60%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      button {
+        width: fit-content;
+        display: flex;
+        align-self: flex-end;
+      }
+
+      form {
+        margin-left: 85px;
+        width: 45%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 80%;
+        h1 {
+          margin-bottom: 32px;
+        }
+
+        mat-form-field {
+          margin-bottom: 14px;
+        }
+
+        button {
+          margin-top: 24px;
+          align-self: center;
+          font-size: 18px;
+          padding: 8px 30px;
+        }
+      }
+    }
+  }
+}

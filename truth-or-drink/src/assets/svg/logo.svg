@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="564.987" height="399.356" viewBox="0 0 564.987 399.356">
+  <defs>
+    <linearGradient id="linear-gradient" x1="-0.177" y1="-0.129" x2="1.162" y2="1.237" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#fff"/>
+    </linearGradient>
+    <filter id="Rectangle_666" x="182.272" y="0" width="382.715" height="399.356" filterUnits="userSpaceOnUse">
+      <feOffset dx="-15" dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_2" data-name="Group 2" transform="translate(-151.775 -79.129)">
+    <rect id="Rectangle_662" data-name="Rectangle 662" width="229" height="306" rx="18" transform="translate(151.775 167.195) rotate(-21)" fill="url(#linear-gradient)"/>
+    <g transform="matrix(1, 0, 0, 1, 151.77, 79.13)" filter="url(#Rectangle_666)">
+      <rect id="Rectangle_666-2" data-name="Rectangle 666" width="229" height="306" rx="18" transform="matrix(0.84, 0.54, -0.54, 0.84, 372.93, 6)" fill="url(#linear-gradient)"/>
+    </g>
+    <text id="_" data-name="?" transform="matrix(0.914, -0.407, 0.407, 0.914, 271.702, 389.293)" fill="#ef6e0e" font-size="273" font-family="Arial-BoldMT, Arial" font-weight="700"><tspan x="0" y="0">?</tspan></text>
+    <g id="Cancel" transform="matrix(0.819, 0.574, -0.574, 0.819, 516.299, 179.588)">
+      <path id="Union_3" data-name="Union 3" d="M69.084,81.647,12.558,138.173,0,125.607,56.522,69.084,0,12.558,12.558,0,69.084,56.522,125.607,0l12.566,12.558L81.647,69.084l56.526,56.522-12.566,12.566Z" fill="#ef6e0e" stroke="#ef6e0e" stroke-width="8"/>
+    </g>
+  </g>
+</svg>
