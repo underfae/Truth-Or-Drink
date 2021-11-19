@@ -1,0 +1,45 @@
+<div class="wrapper">
+  <button mat-raised-button> ZALOGUJ SIĘ </button>
+  <form [formGroup]="form" (ngSubmit)="onRegister()" >
+    <h1> Zarejestruj się!</h1>
+    <mat-form-field appearance="outline">
+      <mat-label> Nazwa użytkownika </mat-label>
+      <input matInput type="text" formControlName="username" [errorStateMatcher]="matcher" required>
+      <mat-error *ngIf="form?.get('username').hasError('required')">
+        Nazwa użytkownika jest wymagana
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label> Email </mat-label>
+      <input matInput type="email" formControlName="email" [errorStateMatcher]="matcher" required>
+      <mat-error *ngIf="form?.get('email').hasError('email') && !form?.get('email').hasError('required')">
+        Podaj prawidłowy email
+      </mat-error>
+      <mat-error *ngIf="form?.get('email').hasError('required')">
+        Email jest wymagany
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-form-field" appearance="outline">
+      <mat-label>Hasło</mat-label>
+      <input matInput type="password" formControlName="password" required [errorStateMatcher]="matcher">
+      <mat-error *ngIf="form?.get('password').hasError('required')">
+        Hasło jest wymagane
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-form-field" appearance="outline">
+      <mat-label> Powtórz hasło </mat-label>
+      <input matInput type="password" formControlName="confirmPassword" required [errorStateMatcher]="matcher">
+      <mat-error *ngIf="form?.get('confirmPassword').hasError('required')">
+        Potwierdzenie hasła jest wymagane
+      </mat-error>
+      <mat-error *ngIf="form?.get('confirmPassword').hasError('mustMatch')">
+        Hasła muszą być takie same
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button  type="submit" color="accent" [disabled]="!form.valid"> ZAREJESTRUJ SIĘ </button>
+  </form>
+</div>

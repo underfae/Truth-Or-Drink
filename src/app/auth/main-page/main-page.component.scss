@@ -59,34 +59,6 @@
       height: 100%;
       display: flex;
       flex-direction: column;
-      button {
-        width: fit-content;
-        display: flex;
-        align-self: flex-end;
-      }
-
-      form {
-        margin-left: 85px;
-        width: 45%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        height: 80%;
-        h1 {
-          margin-bottom: 32px;
-        }
-
-        mat-form-field {
-          margin-bottom: 14px;
-        }
-
-        button {
-          margin-top: 24px;
-          align-self: center;
-          font-size: 18px;
-          padding: 8px 30px;
-        }
-      }
     }
   }
 }
