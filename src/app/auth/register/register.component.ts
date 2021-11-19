@@ -1,33 +1,43 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MyErrorStateMatcher } from 'src/app/shared/helpers/form.helper';
+import { Component, OnInit } from '@angular/core'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { Router } from '@angular/router'
+
+import { PasswordMatch } from '../../shared/custom-validators'
+import { MyErrorStateMatcher } from '../../shared/helpers/form.helper'
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
+  form: FormGroup
+  matcher = new MyErrorStateMatcher()
 
-  form: FormGroup;
-  matcher = new MyErrorStateMatcher();
-
-  constructor() {}
+  constructor(private formBuilder: FormBuilder, protected router: Router) {}
 
   ngOnInit(): void {
-    this.initForm();
+    this.initForm()
   }
 
   initForm(): void {
-    this.form = new FormGroup({
-      username: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required]),
-      newPassword: new FormControl('', [Validators.required])
-    });
+    this.form = this.formBuilder.group(
+      {
+        username: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(6)]],
+        confirmPassword: ['', Validators.required],
+      },
+      {
+        validator: PasswordMatch('password', 'confirmPassword'),
+      },
+    )
   }
 
   onRegister(): void {
-    console.log(this.form.value);
+    console.log(this.form.value)
+  }
+  openLogin() {
+    this.router.navigateByUrl('auth')
   }
 }

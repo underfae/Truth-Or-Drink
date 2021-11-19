@@ -1,5 +1,5 @@
 <div class="wrapper">
-  <button mat-raised-button> UTWÓRZ KONTO </button>
+  <button mat-raised-button (click)="openRegistration()"> UTWÓRZ KONTO </button>
   <form [formGroup]="form" (ngSubmit)="onLogin()" >
     <h1> Zaloguj się!</h1>
     <mat-form-field appearance="outline">

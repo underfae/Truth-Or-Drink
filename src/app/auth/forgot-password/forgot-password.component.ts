@@ -1,38 +1,36 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { CustomValidators } from 'src/app/shared/custom-validators';
+import { Component, OnInit } from '@angular/core'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 
-import { MyErrorStateMatcher } from '../../shared/helpers/form.helper';
+import { MyErrorStateMatcher } from '../../shared/helpers/form.helper'
+import { PasswordMatch } from '../../shared/custom-validators'
 
 @Component({
   selector: 'app-forgot-password',
   templateUrl: './forgot-password.component.html',
   styleUrls: ['./forgot-password.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ForgotPasswordComponent implements OnInit {
+  form: FormGroup
+  matcher = new MyErrorStateMatcher()
 
-  form: FormGroup;
-  matcher = new MyErrorStateMatcher();
-
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
-    this.initForm();
+    this.initForm()
   }
 
   initForm(): void {
-    this.form = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-      newPassword: new FormControl('', [Validators.required]),
-    }, { validators: CustomValidators.checkPasswords });
+    this.form = this.formBuilder.group(
+      {
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(6)]],
+        newPassword: ['', Validators.required],
+      },
+      {
+        validator: PasswordMatch('password', 'newPassword'),
+      },
+    )
   }
 
-  onReset(): void {
-    console.log(this.form?.hasError('notSame'));
-    if (this.form.invalid) {
-      console.log('invalid');
-    }
-  }
-
+  onReset(): void {}
 }

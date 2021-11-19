@@ -1,12 +1,14 @@
-import { FormGroup, ValidationErrors, ValidatorFn } from "@angular/forms";
+import { FormGroup, ValidationErrors, ValidatorFn } from '@angular/forms'
 
-export class CustomValidators {
-  static checkPasswords: ValidatorFn = (form: FormGroup):  ValidationErrors | null => {
-    let password = form.controls.password.value;
-    let newPassword = form.controls.newPassword.value;
+export function PasswordMatch(password: string, repeatedPassword: string) {
+  return (formGroup: FormGroup) => {
+    const pass = formGroup.controls[password]
+    const repeatedPass = formGroup.controls[repeatedPassword]
 
-    return password === newPassword ? null : { 'notSame': true }
+    if (pass.value !== repeatedPass.value) {
+      repeatedPass.setErrors({ mustMatch: true })
+    } else {
+      repeatedPass.setErrors(null)
+    }
   }
 }
-
-

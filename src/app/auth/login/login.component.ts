@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { MyErrorStateMatcher } from '../../shared/helpers/form.helper';
 
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
   matcher = new MyErrorStateMatcher();
 
-  constructor() {}
+  constructor( protected router: Router) {}
 
   ngOnInit(): void {
     this.initForm();
@@ -29,5 +30,9 @@ export class LoginComponent implements OnInit {
 
   onLogin(): void {
     console.log(this.form.value);
+  }
+
+  openRegistration(){
+    this.router.navigateByUrl('auth/register')
   }
 }
