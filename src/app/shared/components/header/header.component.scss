@@ -1,0 +1,31 @@
+:host {
+  width: 100%;
+  .menu-wrapper {
+    display: flex;
+    height: 100px;
+    .menu {
+      background: #ef6e0e;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      display: flex;
+      width: 70%;
+      height: 60px;
+      flex-direction: row;
+      margin: auto;
+      text-align: center;
+      div {
+        width: 20%;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        img {
+          width: 40px;
+        }
+      }
+      .active-link {
+        background-color: #f6b21f;
+        color: white;
+        opacity: 0.85;
+      }
+    }
+  }
+}

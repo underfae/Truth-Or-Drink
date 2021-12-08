@@ -16,10 +16,15 @@ import { NgModule } from '@angular/core'
 import { AppComponent } from './app.component'
 import { AppRoutingModule } from './app-routing.module'
 import { AuthModule } from './auth/auth.module'
-import { environment } from 'src/environments/environment'
+import { DaresComponent } from './dares/dares.component';
+import { GamesComponent } from './games/games.component';
+import { HeaderComponent } from './shared/components/header/header.component';
+import { ProfileComponent } from './profile/profile.component'
+import { QuestionsComponent } from './questions/questions.component';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HeaderComponent, DaresComponent, QuestionsComponent, GamesComponent, ProfileComponent],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,

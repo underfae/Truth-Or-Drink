@@ -1,0 +1,129 @@
+.wrapper {
+  width: 100%;
+  height: calc(100% - 100px);
+  display: flex;
+  flex-direction: row;
+  padding: 24px 45px;
+  align-items: center;
+
+  .profile {
+    width: 25%;
+    height: 80%;
+    background: #ef6e0e;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: flex;
+    flex-direction: column;
+    color: white;
+    padding: 24px 24px;
+    .profile-info {
+      align-self: center;
+
+      text-align: center;
+      img {
+        width: 200px;
+        height: auto;
+        border-radius: 50%;
+      }
+      div {
+        font-size: 18px;
+      }
+      .name {
+        font-family: "Bangers", Arial;
+        letter-spacing: 1px;
+        font-size: 24px;
+        margin: 24px 0;
+      }
+    }
+    hr {
+      margin: 24px 0;
+      height: 2px;
+      width: 100%;
+      color: white;
+    }
+
+    .game-info {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      div {
+        display: flex;
+        font-size: 18px;
+        margin: 16px 0;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  .lists {
+    height: 80%;
+    width: 100%;
+    margin-left: 24px;
+    .row-wrapper {
+      display: flex;
+      flex-direction: column;
+      height: 33.3%;
+      justify-content: space-evenly;
+      .header {
+        height: 10%;
+        font-family: "Bangers", Arial;
+        letter-spacing: 1px;
+        font-size: 24px;
+        color: #ef6e0e;
+      }
+      .list {
+        height: 75%;
+        display: flex;
+        justify-content: space-between;
+        .card-wrapper {
+          .text {
+            height: 80%;
+            text-align: center;
+            display: flex;
+            align-items: center;
+          }
+          button {
+            width: 70%;
+          }
+          .icons {
+            display: flex;
+            justify-content: end;
+            img {
+              width: 20px;
+            }
+          }
+        }
+      }
+
+      .game-list {
+        height: 75%;
+        display: flex;
+        justify-content: space-between;
+        .card-wrapper {
+          .text {
+            height: 60%;
+            text-align: center;
+            display: flex;
+            align-items: center;
+          }
+          .button {
+            display: flex;
+            justify-content: center;
+            button {
+              width: 70%;
+              font-family: "Bangers", Arial;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.card-wrapper {
+  margin-top: 8px;
+  width: 18%;
+  height: auto;
+  border: 1px solid #818181;
+  padding: 12px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}

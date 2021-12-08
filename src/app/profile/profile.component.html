@@ -1,0 +1,79 @@
+<app-header></app-header>
+<div class="wrapper">
+  <div class="profile">
+    <div class="profile-info">
+      <img src="../../assets/images/avatar.jpg">
+      <div class="name">Gabriela Frączek</div>
+      <div class="email">gabriela.fraczek@icloud.com</div>
+    </div>
+    <hr>
+    <div class="game-info">
+      <div class="games">
+        <p>Utworzone gry</p>
+        <p>5</p>
+      </div>
+      <div class="questions">
+        <p>Utworzone pytania</p>
+        <p>10</p>
+      </div>
+      <div class="dares">
+        <p>Utworzone wyzwania</p>
+        <p>123</p>
+      </div>
+    </div>
+  </div>
+  <div class="lists">
+
+    <div class='row-wrapper'>
+      <div class="header">
+        Ostatnio utworzone wyzwania
+      </div>
+      <div class="list">
+        <ng-container *ngFor='let dare of latestDares'>
+          <div class="card-wrapper">
+            <div class="text"> {{dare?.name}}</div>
+            <div class="icons">
+              <ng-container *ngFor='let i of numberArray(dare.value)'>
+                <img src="../../assets/images/drink.svg">
+              </ng-container>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class='row-wrapper'>
+      <div class="header">
+        Ostatnio utworzone pytania
+      </div>
+      <div class="list">
+        <ng-container *ngFor='let question of latestQuestions'>
+          <div class="card-wrapper">
+            <div class="text"> {{question?.name}}</div>
+            <div class="icons">
+              <ng-container *ngFor='let i of numberArray(question.value)'>
+                <img src="../../assets/images/drink.svg">
+              </ng-container>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class='row-wrapper'>
+      <div class="header">
+        Ostatnio utworzone gry
+      </div>
+      <div class="game-list">
+        <ng-container *ngFor='let game of latestGames'>
+          <div class="card-wrapper">
+            <div class="text"> {{game?.name}}</div>
+            <div class="button">
+              <button mat-button>Zagraj</button>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
