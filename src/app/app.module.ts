@@ -11,6 +11,9 @@ import { MatButtonModule } from '@angular/material/button'
 import { MatCheckboxModule } from '@angular/material/checkbox'
 import { MatIconModule } from '@angular/material/icon'
 import { MatInputModule } from '@angular/material/input'
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTableModule} from '@angular/material/table';
+
 import { NgModule } from '@angular/core'
 
 import { AppComponent } from './app.component'
@@ -36,7 +39,9 @@ import { environment } from 'src/environments/environment';
     MatButtonModule,
     MatCheckboxModule,
     MatIconModule,
+    MatPaginatorModule,
     MatInputModule,
+    MatTableModule,
     ReactiveFormsModule,
   ],
   providers: [
