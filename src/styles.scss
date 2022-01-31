@@ -13,4 +13,22 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 
+.mat-radio-outer-circle{
+  border-color: white;
+  
+}
+.mat-form-field-appearance-standard .mat-form-field-underline {
+  background-color: white;
+}
 
+.mat-select-arrow {
+color: white;
+}
+
+.mat-form-field.mat-focused.mat-primary .mat-select-arrow {
+  color: white;
+}
+
+.mat-select-value {
+  color:white;
+}
