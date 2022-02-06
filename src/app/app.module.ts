@@ -1,5 +1,4 @@
 import { AngularFireModule } from '@angular/fire'
-import { AngularFirestoreModule } from '@angular/fire/firestore'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { BrowserModule } from '@angular/platform-browser'
 import {
@@ -29,6 +28,9 @@ import { ConfigPageComponent } from './config-page/config-page.component';
 import { GamePageComponent } from './game-page/game-page.component';
 import { RulesComponent } from './shared/components/rules/rules.component';
 
+import {AngularFireAuthModule, USE_EMULATOR as USE_AUTH_EMULATOR} from '@angular/fire/auth';
+import {AngularFirestoreModule, USE_EMULATOR as USE_FIRESTORE_EMULATOR} from '@angular/fire/firestore';
+import {AngularFireFunctionsModule, USE_EMULATOR as USE_FUNCTIONS_EMULATOR} from '@angular/fire/functions';
 @NgModule({
   declarations: [AppComponent, HeaderComponent, DaresComponent, QuestionsComponent, GamesComponent, ProfileComponent, ConfigPageComponent, GamePageComponent, RulesComponent],
   imports: [
@@ -47,9 +49,15 @@ import { RulesComponent } from './shared/components/rules/rules.component';
     MatIconModule,
     MatInputModule,
     ReactiveFormsModule,
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    AngularFireFunctionsModule
   ],
   providers: [
     { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher },
+    { provide: USE_AUTH_EMULATOR, useValue: environment.useEmulators ? ['localhost', 9099] : undefined},
+    { provide: USE_FIRESTORE_EMULATOR, useValue: environment.useEmulators ? ['localhost', 8088] : undefined},
+    { provide: USE_FUNCTIONS_EMULATOR, useValue: environment.useEmulators ? ['localhost', 5001]: undefined}
   ],
   bootstrap: [AppComponent],
 })

@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Dare } from '../core/dare.model';
+import { Question } from '../core/question.model';
+import { DaresService } from '../core/services/dares.service';
+import { QuestionsService } from '../core/services/questions.service';
 
 @Component({
   selector: 'app-game-page',
@@ -8,11 +13,23 @@ import { Router } from '@angular/router';
 })
 export class GamePageComponent implements OnInit {
 
-  constructor(protected router: Router) { }
+  dares$: Observable<Dare[]>;
+  questions$: Observable<Question[]>;
+
+  constructor(
+          protected router: Router,
+          protected daresService: DaresService,
+          protected questionService: QuestionsService
+  ) { }
 
   ngOnInit(): void {
+    this.reloadElements();
   }
 
+  reloadElements(){
+    this.dares$ = this.daresService.loadFreeGameDares("D", 2);
+    this.questions$ = this.questionService.loadFreeGameQuestions("D", 2);
+  }
 
   menu():void{
     this.router.navigateByUrl("/config")
@@ -23,7 +40,7 @@ export class GamePageComponent implements OnInit {
   }
 
   nextCard(): void{
-  
+
   }
 
 }

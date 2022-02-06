@@ -1,38 +1,37 @@
 :host {
   height: 100%;
 
+  button {
+    width: fit-content;
+    display: flex;
+    float: right;
+  }
+
   .wrapper {
     display: flex;
     flex-direction: column;
     height: 100%;
-
-    button {
-      width: fit-content;
+    place-content: center;
+    .auth-container {
       display: flex;
-      align-self: flex-end;
+      align-self: center;
+      .firebaseui-container{
+        .firebaseui-card-content{
+          background-color:black;
+        }
+      }
+
+      button{
+        border:none !important;
+      }
     }
 
-    form {
-      margin-left: 85px;
-      width: 45%;
+
+    .login {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      height: 80%;
-      h1 {
-        margin-bottom: 32px;
-      }
-
-      mat-form-field {
-        margin-bottom: 14px;
-      }
-
-      button {
-        margin-top: 24px;
-        align-self: left;
-        font-size: 18px;
-        padding: 8px 30px;
-      }
+      align-items: center;
+      margin-top: 40px;
     }
   }
 }
