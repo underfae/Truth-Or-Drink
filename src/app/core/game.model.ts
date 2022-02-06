@@ -6,3 +6,9 @@ export class Game {
   questions: [];
   dares: [];
 }
+
+export enum GameCategory{
+  F = 'ZABAWNE',
+  S = 'SZKOLNE',
+  A = 'POWAŻNE'
+}

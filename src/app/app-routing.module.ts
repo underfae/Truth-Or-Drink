@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
+import { ConfigPageComponent } from './config-page/config-page.component'
 
 import { DaresComponent } from './dares/dares.component'
+import { GamePageComponent } from './game-page/game-page.component'
 import { GamesComponent } from './games/games.component'
 import { ProfileComponent } from './profile/profile.component'
 import { QuestionsComponent } from './questions/questions.component'
@@ -17,7 +19,9 @@ const routes: Routes = [
   { path: 'dares', component: DaresComponent },
   { path: 'questions', component: QuestionsComponent },
   { path: 'games', component: GamesComponent },
-  { path: 'logout', component: ProfileComponent }
+  { path: 'logout', component: ProfileComponent },
+  { path: 'config', component: ConfigPageComponent },
+  { path: 'game', component: GamePageComponent }
 ]
 
 @NgModule({
