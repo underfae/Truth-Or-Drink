@@ -24,7 +24,7 @@ export class ProfileComponent implements OnInit {
     { name: 'Noś  ubrania na lewą stronę', value: 1 },
     { name: 'Zjedz szczyptę pieprzu', value: 3 },
   ];
-  latestGames: Game[] = [
+  latestGames = [
     { name: 'Na zjazd szachistów' },
     { name: 'Na zjazd szachistów 1' },
     { name: 'Na zjazd szachistów 2' },

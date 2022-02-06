@@ -8,6 +8,10 @@ import {
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { MatButtonModule } from '@angular/material/button'
 import { MatCheckboxModule } from '@angular/material/checkbox'
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTableModule} from '@angular/material/table';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
 import {MatRadioModule} from '@angular/material/radio';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon'
@@ -24,6 +28,9 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { ProfileComponent } from './profile/profile.component'
 import { QuestionsComponent } from './questions/questions.component';
 import { environment } from 'src/environments/environment';
+import { QuestionsDialogComponent } from './shared/components/questions-dialog/questions-dialog.component';
+import { GamesDialogComponent } from './shared/components/games-dialog/games-dialog.component';
+import { SharedDialogComponent } from './shared/components/shared-dialog/shared-dialog.component'
 import { ConfigPageComponent } from './config-page/config-page.component';
 import { GamePageComponent } from './game-page/game-page.component';
 import { RulesComponent } from './shared/components/rules/rules.component';
@@ -32,7 +39,26 @@ import {AngularFireAuthModule, USE_EMULATOR as USE_AUTH_EMULATOR} from '@angular
 import {AngularFirestoreModule, USE_EMULATOR as USE_FIRESTORE_EMULATOR} from '@angular/fire/firestore';
 import {AngularFireFunctionsModule, USE_EMULATOR as USE_FUNCTIONS_EMULATOR} from '@angular/fire/functions';
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, DaresComponent, QuestionsComponent, GamesComponent, ProfileComponent, ConfigPageComponent, GamePageComponent, RulesComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    DaresComponent,
+    QuestionsComponent,
+    GamesComponent,
+    ProfileComponent,
+    QuestionsDialogComponent,
+    GamesDialogComponent,
+    SharedDialogComponent,
+    AppComponent,
+    HeaderComponent,
+    DaresComponent,
+    QuestionsComponent,
+    GamesComponent,
+    ProfileComponent,
+    ConfigPageComponent,
+    GamePageComponent,
+    RulesComponent
+  ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
@@ -41,13 +67,19 @@ import {AngularFireFunctionsModule, USE_EMULATOR as USE_FUNCTIONS_EMULATOR} from
     BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     MatButtonModule,
     MatSelectModule,
     MatDialogModule,
     MatCheckboxModule,
     MatRadioModule,
     MatIconModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatPaginatorModule,
     MatInputModule,
+    MatFormFieldModule,
+    MatTableModule,
     ReactiveFormsModule,
     AngularFirestoreModule,
     AngularFireAuthModule,
