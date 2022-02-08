@@ -131,3 +131,239 @@
   padding: 12px;
   box-shadow: $box-shadow;
 }
+
+
+
+@media (min-width: 0) and (max-width: 768px) {
+
+  .wrapper {
+    width: 100%;
+    height: calc(100% - 100px);
+    display: flex;
+    flex-direction: column;
+    padding: 0 16px;
+    align-items: center;
+
+    .profile {
+      width: 85%;
+      height: 20%;
+      display: flex;
+      flex-direction: row;
+      color: white;
+      justify-content: space-around;
+      padding: $margin-small $margin-small;
+      .profile-info {
+        height: 100%;
+        align-self: center;
+        text-align: center;
+        img {
+          width: 80px;
+        }
+        div {
+          font-size: $fs-regular;
+        }
+        .name {
+          font-size: $fs-regular;
+          margin: 0 0;
+        }
+      }
+      hr {
+        margin: $margin-small $margin-small;
+        height:80%;
+        width: 2px;
+        color: white;
+      }
+
+      .game-info {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        div {
+          display: flex;
+          font-size: 12px;
+          margin: $margin-small 0;
+        }
+      }
+    }
+
+    .lists {
+      height: 80%;
+      width: 100%;
+      margin-left: $margin-regular;
+      .row-wrapper {
+        display: flex;
+        flex-direction: column;
+        height: 33.3%;
+        justify-content: space-evenly;
+        .header {
+          height: 10%;
+          font-size: $fs-regular;
+        }
+        .list {
+          height: 75%;
+          display: flex;
+          .card-wrapper {
+            margin-right:  8px;
+            .text {
+              height: 80%;
+              justify-content: center;
+              display: flex;
+              align-items: center;
+            }
+            button {
+              width: 70%;
+            }
+            .icons {
+              display: flex;
+              justify-content: end;
+              img {
+                width: 20px;
+              }
+            }
+          }
+        }
+
+        .game-list {
+          height: 75%;
+          display: flex;
+          .card-wrapper {
+            margin-right: 24px;
+            .text {
+              height: 60%;
+              justify-content: center;
+              display: flex;
+              align-items: center;
+              color: white;
+            }
+            .button {
+              display: flex;
+              justify-content: center;
+              button {
+                width: 70%;
+                font-family: $font-fam;
+                color: white;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+
+@media (min-width: 768px)  and (max-width: 992px){
+  .wrapper {
+    width: 100%;
+    height: calc(100% - 100px);
+    display: flex;
+    flex-direction: column;
+    padding: 0 16px;
+    align-items: center;
+
+    .profile {
+      width: 85%;
+      height: 20%;
+      display: flex;
+      flex-direction: row;
+      color: white;
+      justify-content: space-around;
+      padding: $margin-small $margin-small;
+      .profile-info {
+        height: 100%;
+        align-self: center;
+        text-align: center;
+        img {
+          width: 80px;
+        }
+        div {
+          font-size: $fs-regular;
+        }
+        .name {
+          font-size: $fs-regular;
+          margin: 0 0;
+        }
+      }
+      hr {
+        margin: $margin-small $margin-small;
+        height:80%;
+        width: 2px;
+        color: white;
+      }
+
+      .game-info {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        div {
+          display: flex;
+          font-size: 12px;
+          margin: $margin-small 0;
+        }
+      }
+    }
+
+    .lists {
+      height: 80%;
+      width: 100%;
+      margin-left: $margin-regular;
+      .row-wrapper {
+        display: flex;
+        flex-direction: column;
+        height: 33.3%;
+        justify-content: space-evenly;
+        .header {
+          height: 10%;
+          font-size: $fs-regular;
+        }
+        .list {
+          height: 75%;
+          display: flex;
+          .card-wrapper {
+            margin-right:  8px;
+            .text {
+              height: 80%;
+              justify-content: center;
+              display: flex;
+              align-items: center;
+            }
+            button {
+              width: 70%;
+            }
+            .icons {
+              display: flex;
+              justify-content: end;
+              img {
+                width: 20px;
+              }
+            }
+          }
+        }
+
+        .game-list {
+          height: 75%;
+          display: flex;
+          .card-wrapper {
+            margin-right: 24px;
+            .text {
+              height: 60%;
+              justify-content: center;
+              display: flex;
+              align-items: center;
+              color: white;
+            }
+            .button {
+              display: flex;
+              justify-content: center;
+              button {
+                width: 70%;
+                font-family: $font-fam;
+                color: white;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+ }

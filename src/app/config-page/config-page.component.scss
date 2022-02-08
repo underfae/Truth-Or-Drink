@@ -120,3 +120,166 @@
 .mat-select-value {
   color: white !important;
 }
+
+@media (min-width: 0) and (max-width: 768px) {
+  :host {
+    .wrapper {
+      padding: $margin-regular;
+      .header {
+        h1{
+          font-size: $fs-regular;
+          text-align: center;
+        }
+      }
+      .options {
+
+        flex-direction: column;
+        .right-side,
+        .left-side {
+          width: 5%;
+          text-orientation:inherit;
+          font-size: $fs-medium;
+        }
+
+        .right-side {
+          writing-mode: inherit;
+        }
+        .left-side {
+          writing-mode:inherit;
+        }
+
+        form {
+          width: 100%;
+          height: 100%;
+          .main-part {
+            height: 80%;
+            justify-content: space-between;
+            .labels {
+              width: 40%;
+              height: 50%;
+              display: flex;
+              h1{
+                font-size: $fs-regular;
+              }
+              flex-direction: column;
+              justify-content: space-evenly;
+              text-align: end;
+              color: white;
+            }
+            .separator {
+              width: 0;
+            }
+            .controls {
+              width: 40%;
+              height: 50%;
+              display: flex;
+              flex-direction: column;
+              justify-content: space-evenly;
+              color: white;
+              mat-form-field {
+                width: 100%;
+                align-self: center;
+              }
+              mat-radio-group {
+                align-self: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                mat-radio-button{
+                  margin-bottom:$margin-small;
+                }
+              }
+              img {
+                height: 15px;
+              }
+            }
+          }
+          .button {
+            button {
+              font-size: 24px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 768px)  and (max-width: 992px){
+  :host {
+    .wrapper {
+      padding: $margin-regular;
+      .header {
+        h1{
+          font-size: $fs-normal;
+          text-align: center;
+        }
+      }
+      .options {
+
+        flex-direction: column;
+        .right-side,
+        .left-side {
+          width: 5%;
+          text-orientation:inherit;
+          font-size: $fs-medium;
+        }
+
+        .right-side {
+          writing-mode: inherit;
+        }
+        .left-side {
+          writing-mode:inherit;
+        }
+
+        form {
+          width: 100%;
+          height: 100%;
+          .main-part {
+            height: 80%;
+            justify-content: space-between;
+            .labels {
+              width: 30%;
+              height: 50%;
+              display: flex;
+              h1{
+                font-size: $fs-regular;
+              }
+              flex-direction: column;
+              justify-content: space-evenly;
+              text-align: end;
+              color: white;
+            }
+            .separator {
+              width: 0;
+            }
+            .controls {
+              width: 60%;
+              height: 50%;
+              display: flex;
+              flex-direction: column;
+              justify-content: space-evenly;
+              color: white;
+              mat-form-field {
+                width: 80%;
+                align-self: center;
+              }
+              mat-radio-group {
+                display: flex;
+                justify-content: space-evenly;
+              }
+              img {
+                height: 20px;
+              }
+            }
+          }
+          .button {
+            button {
+              font-size: 24px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
