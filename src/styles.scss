@@ -1,5 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-// @import "~firebaseui/dist/firebaseui.css";
+@import '~@angular/material/theming';
+@import "~firebaseui/dist/firebaseui.css";
+@include mat-core();
+
 * {
   box-sizing: border-box;
 }
@@ -14,7 +17,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
 .mat-radio-outer-circle{
-  border-color: white;
+  border-color: white !important;
 
 }
 .mat-form-field-appearance-standard .mat-form-field-underline {
@@ -22,37 +25,101 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .mat-select-arrow {
-color: white;
+color: white !important;
 }
 
 .mat-form-field.mat-focused.mat-primary .mat-select-arrow {
-  color: white;
+  color: white !important;
 }
 
-.mat-select-value {
-  color:white;
+.mat-form-field-appearance-standard .mat-form-field-underline{
+  background-color: white !important;
 }
 
-// button{
-// }
 
-// .firebaseui-container{
-//   .firebaseui-card-content{
-//   ul{
-//     list-style-type: none;
-//     button{
-//       font-size: 14px;
-//       border:none;
-//       box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
-//       padding: 0 16px;
-//     border-radius: 4px;
-//     font-family: Roboto, "Helvetica Neue", sans-serif;
-//     font-size: 14px;
-//     font-weight: 500;
-//       img{
-//         height:25px;
-//       }
-//     }
-//   }
-//   }
-// }
+$mat-primary: (
+  50: #e3f2fd,
+  100: #bbdefb,
+  200: #90caf9,
+  300: #64b5f6,
+  400: #42a5f5,
+  500: #ef6e0e,
+  600: #1e88e5,
+  700: #1976d2,
+  800: #1565c0,
+  900: #0d47a1,
+  A100: #82b1ff,
+  A200: #448aff,
+  A400: #2979ff,
+  A700: #2962ff,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+
+$mat-accent: (
+  50: #fff3e0,
+  100: #ffe0b2,
+  200: #ffcc80,
+  300: #ffb74d,
+  400: #ffa726,
+  500: #f6830f,
+  600: #fb8c00,
+  700: #f57c00,
+  800: #ef6c00,
+  900: #e65100,
+  A100: #ffd180,
+  A200:white,
+  A400: #ff9100,
+  A700: #ff6d00,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+
+$tod-app-primary: mat-palette($mat-primary);
+$tod-app-accent:  mat-palette($mat-accent, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$tod-app-warn:    mat-palette($mat-red);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as `color` or `typography`.
+$tod-app-theme: mat-light-theme((
+  color: (
+    primary: $tod-app-primary,
+    accent: $tod-app-accent,
+    warn: $tod-app-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($tod-app-theme);

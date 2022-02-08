@@ -1,42 +1,41 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
-import { GameCategory } from '../core/game.model';
-import { RulesComponent } from '../shared/components/rules/rules.component';
-import { MyErrorStateMatcher } from '../shared/helpers/form.helper';
+import { Component, OnInit } from '@angular/core'
+import { FormControl, FormGroup, Validators } from '@angular/forms'
+import { MatDialog } from '@angular/material/dialog'
+import { Router } from '@angular/router'
+
+import { MyErrorStateMatcher } from '../shared/helpers/form.helper'
+import { RulesComponent } from '../shared/components/rules/rules.component'
 
 @Component({
   selector: 'app-config-page',
   templateUrl: './config-page.component.html',
-  styleUrls: ['./config-page.component.scss']
+  styleUrls: ['./config-page.component.scss'],
 })
 export class ConfigPageComponent implements OnInit {
+  form: FormGroup
+  matcher = new MyErrorStateMatcher()
 
-  constructor(protected router: Router, protected dialog: MatDialog) { }
+  constructor(protected router: Router, protected dialog: MatDialog) {}
 
   ngOnInit(): void {
-  }
-  matcher = new MyErrorStateMatcher();
-
-  form: FormGroup = new FormGroup({
-    level: new FormControl(1, Validators.required),
-    category: new FormControl(GameCategory.A, Validators.required),
-    cardsCount: new FormControl(16, Validators.required)
-  })
-
-  play(): void{
-    this.router.navigateByUrl("/game");
+    this.form = new FormGroup({
+      level: new FormControl(null, Validators.required),
+      category: new FormControl('D', Validators.required),
+      cardsCount: new FormControl(null, Validators.required),
+    })
   }
 
-  showRulesDialog():void{
+  play(): void {
+    this.router.navigate(['/game'], { state: { data: this.form.value } })
+  }
+
+  showRulesDialog(): void {
     const dialogRef = this.dialog.open(RulesComponent, {
       width: '500px',
-    });
+    })
 
     dialogRef.afterClosed().subscribe(() => {
-      console.log('The dialog was closed');
-    });
-
+      console.log('The dialog was closed')
+    })
   }
 }

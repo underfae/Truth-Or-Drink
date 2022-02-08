@@ -1,0 +1,17 @@
+@import "../../assets/styles/variables.scss";
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  img {
+    height: 40%;
+  }
+  div {
+    font-size: $fs-big;
+    font-family: $font-fam;
+    text-align: center;
+    margin-top: $margin-large;
+  }
+}

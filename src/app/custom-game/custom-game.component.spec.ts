@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GamesDialogComponent } from './games-dialog.component';
+import { CustomGameComponent } from './custom-game.component';
 
-describe('GamesDialogComponent', () => {
-  let component: GamesDialogComponent;
-  let fixture: ComponentFixture<GamesDialogComponent>;
+describe('CustomGameComponent', () => {
+  let component: CustomGameComponent;
+  let fixture: ComponentFixture<CustomGameComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GamesDialogComponent ]
+      declarations: [ CustomGameComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GamesDialogComponent);
+    fixture = TestBed.createComponent(CustomGameComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

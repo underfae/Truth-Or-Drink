@@ -12,7 +12,7 @@
     <div class="profile" [routerLink]="['/profile']" routerLinkActive="active-link">
       <img src="../../../../assets/images/user.svg">
     </div>
-    <div class="logout" [routerLink]="['/logout']" routerLinkActive="active-link">
+    <div class="logout" (click)="logout()">
       <img src="../../../../assets/images/logout.svg">
     </div>
   </div>

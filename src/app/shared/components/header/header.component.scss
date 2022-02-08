@@ -1,11 +1,13 @@
+@import "../../../../assets/styles/colors.scss";
+
 :host {
   width: 100%;
   .menu-wrapper {
     display: flex;
     height: 100px;
     .menu {
-      background: #ef6e0e;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      background: $primary-color;
+      box-shadow: $box-shadow;
       display: flex;
       width: 70%;
       height: 60px;
@@ -22,7 +24,7 @@
         }
       }
       .active-link {
-        background-color: #f6b21f;
+        background-color: $secondary-color;
         color: white;
         opacity: 0.85;
       }

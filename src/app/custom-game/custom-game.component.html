@@ -1,9 +1,9 @@
-<div class="wrapper">
+<div class="wrapper" [style.background-image]="'url('+game.imageUrl+')'">
   <div class="header">
     TRUTH OR DRINK
   </div>
   <div class="action">
-    <button mat-raised-button (click)="menu()">MENU</button>
+    <button mat-raised-button (click)="close()">ZAMKNIJ</button>
   </div>
   <div class="cards">
     <div class="questions">
@@ -42,6 +42,6 @@
     </div>
   </div>
   <div class="action">
-    <button mat-raised-button (click)="close()">ZAMKNIJ</button>
+    <button mat-raised-button (click)="openRules()">ZASADY GRY</button>
   </div>
 </div>

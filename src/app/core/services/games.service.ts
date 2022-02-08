@@ -1,20 +1,43 @@
+import { AngularFirestore } from '@angular/fire/firestore'
+import { Injectable } from '@angular/core'
 
-import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { Dare } from '../dare.model';
-import { convertSnaps } from './common';
+import { from, Observable } from 'rxjs'
+import { map } from 'rxjs/operators'
 
+import { Game } from '../models/game.model'
+import { convertSnaps } from './common'
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class GamesService {
   constructor(private db: AngularFirestore) {}
 
-  loadUserQuestions(userId: string){}
-  deleteQuestion(questionId: string, userId: string){}
-  editQuestion(questionId: string, userId: string){}
-  createQuestion(userId: string){}
+  loadUserGames(userId?: string): Observable<Game[]> {
+    return this.db
+      .collection('users/' + userId + '/games')
+      .get()
+      .pipe(map((results) => convertSnaps(results)))
+  }
+
+  deleteGame(gameId: string, userId?: string): Observable<any> {
+    return from(this.db.doc(`users/${userId}/games/${gameId}`).delete())
+  }
+
+  editGame(question: Game, gameId: string, userId?: string): Observable<any> {
+    return from(this.db.doc(`users/${userId}/games/${gameId}`).update(question))
+  }
+
+  createGame(game: Partial<Game>, userId: string) {
+    let save$: Observable<any>
+    save$ = from(this.db.collection(`users/${userId}/games`).add(game))
+    return save$.pipe(
+      map((res) => {
+        return {
+          id: res.id,
+          ...game,
+        }
+      }),
+    )
+  }
 }

@@ -7,7 +7,11 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "local-dev": "firebase emulators:start --only firestore,auth",
+    "empty-emulator": "firebase emulators:start",
+    "emulator": "firebase emulators:start --import dares",
+    "export": "firebase emulators:export dares"
   },
   "private": true,
   "dependencies": {
@@ -24,6 +28,7 @@
     "@angular/router": "~11.2.5",
     "eslint": "^6.8.0",
     "firebase": "^7.0 || ^8.0",
+    "firebaseui": "^4.7.3",
     "prettier": "^1.9.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

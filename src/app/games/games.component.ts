@@ -1,170 +1,145 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
-import { Game } from '../core/game.model';
-import { SharedDialogComponent } from '../shared/components/shared-dialog/shared-dialog.component';
+import { Component, OnInit, ViewChild } from '@angular/core'
+import { MatDialog } from '@angular/material/dialog'
+import { MatPaginator } from '@angular/material/paginator'
+import { MatTableDataSource } from '@angular/material/table'
+import { Router } from '@angular/router'
+import { catchError, tap } from 'rxjs/operators'
+import { throwError } from 'rxjs'
+
+import { Game } from '../core/models/game.model'
+import { GamesService } from '../core/services/games.service'
+import { SharedDialogComponent } from '../shared/components/shared-dialog/shared-dialog.component'
+import { UserService } from '../core/services/user.service'
 
 @Component({
   selector: 'app-games',
   templateUrl: './games.component.html',
-  styleUrls: ['./games.component.scss']
+  styleUrls: ['./games.component.scss'],
 })
-export class GamesComponent implements AfterViewInit{
-
-  exampleData: Game[] = [
-    {
-      name: "Gra na zjazd szachowy",
-      category: "A",
-      cardsCount: 32,
-      level: 2,
-      questions: [],
-      dares: []
-    },
-    {
-      name: "Nowa gra",
-      category: "H",
-      cardsCount: 32,
-      level: 3,
-      questions: [],
-      dares: []
-    },
-    {
-      name: "Moja ulubiona",
-      category: "F",
-      cardsCount: 32,
-      level: 2,
-      questions: [],
-      dares: []
-    },
-    {
-      name: "Do usunięcia ",
-      category: "A",
-      cardsCount: 16,
-      level: 1,
-      questions: [],
-      dares: []
-    },
-    {
-      name: "Gra na zjazd szachowy",
-      category: "A",
-      cardsCount: 32,
-      level: 2,
-      questions: [],
-      dares: []
-    },{
-      name: "Gra na zjazd szachowy",
-      category: "A",
-      cardsCount: 32,
-      level: 2,
-      questions: [],
-      dares: []
-    },
-    {
-      name: "Nowa gra",
-      category: "H",
-      cardsCount: 32,
-      level: 3,
-      questions: [],
-      dares: []
-    },
-    {
-      name: "Moja ulubiona",
-      category: "F",
-      cardsCount: 32,
-      level: 2,
-      questions: [],
-      dares: []
-    },
-    {
-      name: "Do usunięcia ",
-      category: "A",
-      cardsCount: 16,
-      level: 1,
-      questions: [],
-      dares: []
-    },
-    {
-      name: "Gra na zjazd szachowy",
-      category: "A",
-      cardsCount: 32,
-      level: 2,
-      questions: [],
-      dares: []
-    },
-    {
-      name: "Gra na zjazd szachowy",
-      category: "A",
-      cardsCount: 32,
-      level: 2,
-      questions: [],
-      dares: []
-    },
-    {
-      name: "Nowa gra",
-      category: "H",
-      cardsCount: 32,
-      level: 3,
-      questions: [],
-      dares: []
-    },
-    {
-      name: "Moja ulubiona",
-      category: "F",
-      cardsCount: 32,
-      level: 2,
-      questions: [],
-      dares: []
-    },
-    {
-      name: "Do usunięcia ",
-      category: "A",
-      cardsCount: 16,
-      level: 1,
-      questions: [],
-      dares: []
-    },
-    {
-      name: "Gra na zjazd szachowy",
-      category: "A",
-      cardsCount: 32,
-      level: 2,
-      questions: [],
-      dares: []
-    }
+export class GamesComponent implements OnInit {
+  displayedColumns: string[] = [
+    'image',
+    'name',
+    'category',
+    'level',
+    'questions',
+    'dares',
+    'options',
   ]
+  dataSource: MatTableDataSource<any>
+  userId: string
 
-  displayedColumns: string[] = ['name','category', 'cardsCount', 'level', 'options'];
-  dataSource = new MatTableDataSource<Game>(this.exampleData);
+  @ViewChild(MatPaginator) paginator: MatPaginator
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  constructor(
+    protected dialog: MatDialog,
+    protected gamesService: GamesService,
+    protected userService: UserService,
+    protected router: Router,
+  ) {}
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+  ngOnInit(): void {
+    this.userService.getUserId().subscribe((id) => {
+      this.userId = id
+      this.reloadElements(id)
+    })
   }
-
-  constructor( protected dialog: MatDialog){}
 
   numberArray(value: number): number[] {
-    return Array(value).fill(4);
+    const arr = []
+    for (let i = 0; i < value; i++) {
+      arr.push(0)
+    }
+    return arr
   }
 
-  deleteGame(element):void{
-
+  reloadElements(id: string): void {
+    this.gamesService.loadUserGames(id).subscribe((data) => {
+      this.dataSource = new MatTableDataSource<Game>(data)
+      this.dataSource.paginator = this.paginator
+    })
   }
 
-  editGame(element):void{
-
+  deleteGame(element: Game): void {
+    this.gamesService
+      .deleteGame(element.id, this.userId)
+      .pipe(
+        tap(() => {
+          console.log('Usunięto grę')
+          this.reloadElements(this.userId)
+        }),
+        catchError((err) => {
+          alert('Nie udało się usunąć gry')
+          return throwError(err)
+        }),
+      )
+      .subscribe()
   }
 
-  addGame():void{
+  editGame(element: Game): void {
     let dialogRef = this.dialog.open(SharedDialogComponent, {
-      height: '400px',
       width: '600px',
       data: {
-        submitButton: "Dodaj",
-        title: "Utwórz nowe pytanie",
+        submitButton: 'Edytuj',
+        title: 'Edytuj grę',
+        game: true,
+        level: element.level,
+        name: element.name,
+        category: element.category,
+        imageUrl: element.imageUrl,
+        dares: element.dares,
+        questions: element.questions,
       },
-    });
+    })
+
+    dialogRef.afterClosed().subscribe((result) => {
+      const newGame = { ...result } as Game
+      this.gamesService
+        .editGame(newGame, element.id, this.userId)
+        .pipe(
+          tap(() => {
+            console.log('Edytowano grę')
+            this.reloadElements(this.userId)
+          }),
+          catchError((err) => {
+            alert('Nie udało się edytować gry')
+            return throwError(err)
+          }),
+        )
+        .subscribe()
+    })
+  }
+
+  addGame(): void {
+    let dialogRef = this.dialog.open(SharedDialogComponent, {
+      width: '600px',
+      data: {
+        submitButton: 'Dodaj',
+        title: 'Utwórz nową grę',
+        game: true,
+      },
+    })
+
+    dialogRef.afterClosed().subscribe((result) => {
+      const newGame = { ...result } as Game
+      this.gamesService
+        .createGame(newGame, this.userId)
+        .pipe(
+          tap(() => {
+            console.log('Utworzono grę')
+            this.reloadElements(this.userId)
+          }),
+          catchError((err) => {
+            console.log(err)
+            alert('Nie udało się utworzyć gry')
+            return throwError(err)
+          }),
+        )
+        .subscribe()
+    })
+  }
+
+  playGame(game: Game) {
+    this.router.navigate(['/custom-game'], { state: { data: game } })
   }
 }

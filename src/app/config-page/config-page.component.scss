@@ -1,116 +1,122 @@
-:host{
+@import "../../assets/styles/variables.scss";
+@import "../../assets/styles/colors.scss";
+
+:host {
+  display: flex;
+  padding: $margin-regular;
+  width: 100%;
+  height: 100%;
+
+  .wrapper {
+    box-sizing: border-box;
     display: flex;
-    padding: 24px;
-    width: 100%;
-    height: 100%;
+    background: $gradient;
+    box-shadow: $box-shadow;
+    width: inherit;
+    height: inherit;
+    flex-direction: column;
+    padding: $margin-regular;
+    .header {
+      height: 15%;
+      color: white;
+      display: flex;
+      align-items: center;
+      align-self: center;
+    }
+    .options {
+      height: 70%;
+      display: flex;
+      height: 100%;
+      flex-direction: row;
+      .right-side,
+      .left-side {
+        width: 5%;
+        text-orientation: upright;
+        font-size: $fs-big;
+        font-family: $font-fam;
+        color: white;
+        align-self: center;
+        cursor: pointer;
+      }
 
-    .wrapper{
-        box-sizing: border-box;
-        display: flex;
-        background: linear-gradient(to left, #f6b420, #ef6e0e);
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-        0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        width: inherit;
-        height:inherit;
-        flex-direction: column;
-        padding:24px;
-        .header{
-            height: 15%;
-            color: white;
-            display: flex;
-            align-items: center;
-            align-self: center;
-        }
-        .options{
-            height: 70%;
-            display: flex;
+      .right-side {
+        writing-mode: vertical-lr;
+      }
+      .left-side {
+        writing-mode: vertical-rl;
+      }
+
+      form {
+        width: 90%;
+        height: 100%;
+        .main-part {
+          width: 100%;
+          height: 90%;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+          .labels {
+            width: 30%;
             height: 100%;
-            flex-direction: row;
-            .right-side, .left-side{
-                width: 5%;
-                text-orientation: upright;
-                font-size: 32px;
-                font-family: 'Bangers', Arial;
-                color: white;
-                align-self: center;
-            }
-
-            .right-side{
-                writing-mode: vertical-lr;
-            }
-            .left-side{
-                writing-mode: vertical-rl;
-            }
-
-            form{
-                width: 90%;
-                height: 100%;
-                .main-part{
-                width: 100%;
-                height: 90%;
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-            
-                .labels{
-                    width: 30%;
-                    height:100%;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-evenly;
-                    text-align: end;
-                    color: white;
-                }
-                .separator{
-                    width: 15%;
-                }
-                .controls{
-                    width: 40%;
-                    height:100%;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-evenly;
-                    color: white;
-                    mat-form-field{
-                        width: 50%;
-                        align-self: center;
-                    }
-                    mat-radio-group{
-                        display: flex;
-                        justify-content: space-evenly;
-                    }
-                    img{
-                        height: 25px;
-                    }
-                }
-            }
-            .button{ 
-                display: flex;
-                height: 10%;
-                justify-content: center;
-                button {
-                font-family: 'Bangers', Arial;
-                width: 150px;
-                height: 40px;
-                font-size: 30px;
-            }
-        }
-        }
-
-        }
-        .actions{
-            height: 15%;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: space-around;  
-           
-            a {
-                color: white;
-                margin: 0 24px;
-                text-decoration: none;
-                font-size: 24px;
+            justify-content: space-evenly;
+            text-align: end;
+            color: white;
+          }
+          .separator {
+            width: 15%;
+          }
+          .controls {
+            width: 40%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            color: white;
+            mat-form-field {
+              width: 50%;
+              align-self: center;
             }
+            mat-radio-group {
+              display: flex;
+              justify-content: space-evenly;
+            }
+            img {
+              height: 25px;
+            }
+          }
         }
+        .button {
+          display: flex;
+          height: 10%;
+          justify-content: center;
+          button {
+            font-family: $font-fam;
+            width: 150px;
+            height: 40px;
+            font-size: 30px;
+          }
+        }
+      }
     }
+    .actions {
+      height: 15%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+
+      a {
+        color: white;
+        margin: 0 $margin-regular;
+        text-decoration: none;
+        font-size: $fs-medium;
+      }
+    }
+  }
+}
+.mat-select-value {
+  color: white !important;
 }

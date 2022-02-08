@@ -1,18 +1,20 @@
-import { Component } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
+import { Location } from '@angular/common'
+import { MatDialog } from '@angular/material/dialog'
 import { Router } from '@angular/router'
 
 import { Dare } from '../core/models/dare.model'
-import { DaresService } from '../core/services/dares.service'
+import { Game } from '../core/models/game.model'
 import { Question } from '../core/models/question.model'
-import { QuestionService } from '../core/services/questions.service'
+import { RulesComponent } from '../shared/components/rules/rules.component'
 
 @Component({
-  selector: 'app-game-page',
-  templateUrl: './game-page.component.html',
-  styleUrls: ['./game-page.component.scss'],
+  selector: 'app-custom-game',
+  templateUrl: './custom-game.component.html',
+  styleUrls: ['./custom-game.component.scss'],
 })
-export class GamePageComponent {
-  gameConfig
+export class CustomGameComponent {
+  game: Game
   questionCard: Question
   dareCard: Dare
   flipped: boolean = false
@@ -20,12 +22,12 @@ export class GamePageComponent {
   questionsArray: Question[]
 
   constructor(
-    protected router: Router,
-    protected daresService: DaresService,
-    protected questionService: QuestionService,
+    private router: Router,
+    protected dialog: MatDialog,
+    private location: Location,
   ) {
-    this.gameConfig = this.router.getCurrentNavigation().extras.state.data
-    this.initializeGame(this.gameConfig)
+    this.game = this.router.getCurrentNavigation().extras.state.data
+    this.initializeGame(this.game)
   }
 
   numberArray(value: number): number[] {
@@ -34,27 +36,6 @@ export class GamePageComponent {
       arr.push(0)
     }
     return arr
-  }
-
-  initializeGame(config): void {
-    const half = Number(config.cardsCount) / 2
-
-    console.log(config)
-    this.questionService
-      .loadFreeGameQuestions(config.category, Number(config.level))
-      .subscribe((result) => {
-        result.sort(() => Math.random() - 0.5)
-        this.questionsArray = result.slice(0, half)
-        this.questionCard = result[0]
-      })
-
-    this.daresService
-      .loadFreeGameDares(config.category, Number(config.level))
-      .subscribe((result) => {
-        result.sort(() => Math.random() - 0.5)
-        this.daresArray = result.slice(0, half)
-        this.dareCard = result[0]
-      })
   }
 
   flip(event): void {
@@ -70,20 +51,23 @@ export class GamePageComponent {
 
     if (!this.flipped) {
       setTimeout(() => {
-        this.nextCard(event)
+        this.loadNextCard(event)
       }, 2000)
     }
   }
 
-  menu(): void {
-    this.router.navigateByUrl('/config')
+  initializeGame(game: Game): void {
+    this.daresArray = game.dares
+    this.questionsArray = game.questions
+    this.dareCard = this.daresArray[0]
+    this.questionCard = this.questionsArray[0]
   }
 
   close(): void {
-    this.router.navigateByUrl('/auth')
+    this.location.back()
   }
 
-  nextCard(event): void {
+  loadNextCard(event): void {
     event.path[3].className === 'dares'
       ? this.loadNewDare(event)
       : this.loadNewQuestion(event)
@@ -109,5 +93,15 @@ export class GamePageComponent {
       }
     }
     this.dareCard = this.daresArray[0]
+  }
+
+  openRules(): void {
+    const dialogRef = this.dialog.open(RulesComponent, {
+      width: '500px',
+    })
+
+    dialogRef.afterClosed().subscribe(() => {
+      console.log('The dialog was closed')
+    })
   }
 }

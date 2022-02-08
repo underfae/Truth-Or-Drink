@@ -1,51 +1,53 @@
 <div class="wrapper">
-    <div class="header">
-        <h1> Zanim zaczniemy wybierz odpowiadające Ci parametry </h1>
-    </div>
-    <div class="options">
-        <div class="left-side"> TRUTH</div>
-        <form [formGroup]="form" (ngSubmit)="play()">
+  <div class="header">
+    <h1> Zanim zaczniemy wybierz odpowiadające Ci parametry </h1>
+  </div>
+  <div class="options">
+    <div class="left-side" [routerLink]="'/auth'"> TRUTH</div>
+    <form [formGroup]="form" (ngSubmit)="play()">
 
-            <div class="main-part">
+      <div class="main-part">
 
-                <div class="labels">
-                    <h1>Poziom trudności</h1>
-                    <h1>Kategoria</h1>
-                    <h1>Ilość kart</h1>
-                </div>
-                <div class="separator"></div>
-                <div class="controls">
-                    <mat-radio-group aria-label="Select an option">
-                        <mat-radio-button value="1"><img src="../../assets/images/drink.svg"></mat-radio-button>
-                        <mat-radio-button value="2"><img src="../../assets/images/drink.svg"><img
-                                src="../../assets/images/drink.svg"></mat-radio-button>
-                        <mat-radio-button value="3"><img src="../../assets/images/drink.svg"><img
-                                src="../../assets/images/drink.svg"><img src="../../assets/images/drink.svg">
-                        </mat-radio-button>
-                    </mat-radio-group>
-                    <mat-form-field appearance="standard">
-                        <mat-select>
-                            <mat-option value="F">Zabawne</mat-option>
-                            <mat-option value="S">Szkolne</mat-option>
-                            <mat-option value="SR">Poważne</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-radio-group aria-label="Select an option">
-                        <mat-radio-button value="8">8</mat-radio-button>
-                        <mat-radio-button value="16">16</mat-radio-button>
-                        <mat-radio-button value="32">32</mat-radio-button>
-                    </mat-radio-group>
-                </div>
-                <div class="separator"></div>
-
-            </div>
-            <div class="button">
-            <button type="submit" mat-raised-button>Zagraj</button>
+        <div class="labels">
+          <h1>Poziom trudności</h1>
+          <h1>Kategoria</h1>
+          <h1>Ilość kart</h1>
         </div>
-        </form>
-        <div class="right-side">DRINK</div>
-    </div>
-    <div class="actions">
-        <a mat-button (click)="showRulesDialog()">Zasady gry</a>
-    </div>
+        <div class="separator"></div>
+        <div class="controls">
+          <mat-radio-group aria-label="Select an option" formControlName="level">
+            <mat-radio-button value=1><img src="../../assets/images/white-drink.png"></mat-radio-button>
+            <mat-radio-button value=2><img src="../../assets/images/white-drink.png"><img
+                src="../../assets/images/white-drink.png"></mat-radio-button>
+            <mat-radio-button value=3><img src="../../assets/images/white-drink.png"><img
+                src="../../assets/images/white-drink.png"><img src="../../assets/images/white-drink.png">
+            </mat-radio-button>
+          </mat-radio-group>
+          <mat-form-field appearance="standard">
+            <mat-select formControlName="category">
+              <mat-option value="ZABAWNE">ZABAWNE</mat-option>
+              <mat-option value="+18">+18</mat-option>
+              <mat-option value="SZKOLNE">SZKOLNE</mat-option>
+              <mat-option value="ŁATWE">ŁATWE</mat-option>
+              <mat-option value="TRUDNE">TRUDNE</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-radio-group aria-label="Select an option" formControlName="cardsCount">
+            <mat-radio-button value=8>8</mat-radio-button>
+            <mat-radio-button value=16>16</mat-radio-button>
+            <mat-radio-button value=32>32</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div class="separator"></div>
+
+      </div>
+      <div class="button">
+        <button type="submit" mat-raised-button>Zagraj</button>
+      </div>
+    </form>
+    <div class="right-side" [routerLink]="'/auth'">DRINK</div>
+  </div>
+  <div class="actions">
+    <a mat-button (click)="showRulesDialog()">Zasady gry</a>
+  </div>
 </div>

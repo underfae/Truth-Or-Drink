@@ -1,46 +1,61 @@
+<h1 mat-dialog-title>{{ data.title }}</h1>
 <div mat-dialog-content>
-  <div class="text" mat-dialog-title>
-    {{ data.title }}
-  </div>
-  <div class="form">
-    <div class="basic-form">
-      <mat-form-field>
-        <mat-label>Nazwa </mat-label>
-        <input matInput [(ngModel)]="data.name">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Kategoria</mat-label>
-        <mat-select>
-          <mat-option value="option1">Option 1</mat-option>
-          <mat-option value="option2">Option 2</mat-option>
-          <mat-option value="option3">Option 3</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Ilość kart</mat-label>
-        <mat-select>
-          <mat-option value="option1">16</mat-option>
-          <mat-option value="option2">32</mat-option>
-          <mat-option value="option3">64</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Poziom trudności</mat-label>
-        <mat-select>
-          <mat-option value="option1">1</mat-option>
-          <mat-option value="option2">2</mat-option>
-          <mat-option value="option3">3</mat-option>
-        </mat-select>
-      </mat-form-field>
-  </div>
-</div>
-<div class="image">
-  <mat-form-field>
-    <mat-label>Tło gry</mat-label>
-    <textarea matInput ></textarea>
-  </mat-form-field>
+  <form [formGroup]="newElement" class="form">
+    <mat-form-field>
+      <mat-label>Nazwa</mat-label>
+      <input matInput formControlName="name" required />
+      <mat-error *ngIf="newElement?.get('name').hasError('required')">
+        Pole jest wymagane
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Kategoria</mat-label>
+      <mat-select formControlName="category" required (selectionChange)="onChange()">
+        <mat-option value="ZABAWNE">ZABAWNE</mat-option>
+        <mat-option value="+18">+18</mat-option>
+        <mat-option value="SZKOLNE">SZKOLNE</mat-option>
+        <mat-option value="ŁATWE">ŁATWE</mat-option>
+        <mat-option value="TRUDNE">TRUDNE</mat-option>
+      </mat-select>
+      <mat-error *ngIf="newElement?.get('category').hasError('required')">
+        Pole jest wymagane
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Poziom trudności</mat-label>
+      <mat-select formControlName="level" required (selectionChange)="onChange()">
+        <mat-option value="1">1</mat-option>
+        <mat-option value="2">2</mat-option>
+        <mat-option value="3">3</mat-option>
+      </mat-select>
+      <mat-error *ngIf="newElement?.get('level').hasError('required')">
+        Pole jest wymagane
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="image" *ngIf="data.game">
+      <mat-label>Tło gry</mat-label>
+      <input matInput formControlName="imageUrl" required />
+      <mat-error *ngIf="newElement?.get('imageUrl').hasError('required')">
+        Pole jest wymagane
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field *ngIf="data.game">
+      <mat-label>Pytania</mat-label>
+      <mat-select formControlName="questions" multiple>
+        <mat-option *ngFor="let question of filteredQuestions" [value]="question">{{question.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field *ngIf="data.game">
+      <mat-label>Wyzwania</mat-label>
+      <mat-select formControlName="dares" multiple>
+        <mat-option *ngFor="let dare of filteredDares" [value]="dare">{{dare.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Anuluj</button>
-  <button mat-button [mat-dialog-close]=""> {{ data.submitButton }}</button>
+  <button mat-raised-button (click)="onNoClick()">Anuluj</button>
+  <button mat-raised-button color="primary" [disabled]="!newElement.valid" [mat-dialog-close]="newElement.value">
+    {{ data.submitButton }}
+  </button>
 </div>

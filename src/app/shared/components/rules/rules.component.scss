@@ -1,15 +1,17 @@
-.mat-dialog-title{
-    font-family: 'Bangers', Arial;
-    font-size: 32px;
-    text-align: center;
-    margin-bottom: 24px;
+@import "../../../../assets/styles/variables.scss";
+
+.mat-dialog-title {
+  font-family: $font-fam;
+  font-size: $fs-big;
+  text-align: center;
+  margin-bottom: $margin-regular;
 }
 
-.mat-dialog-actions{
-    justify-content: center;
-    margin-top: 24px;
-    button{
-        font-family: 'Bangers', Arial;
-        font-size: 16px;
-    }
+.mat-dialog-actions {
+  justify-content: center;
+  margin-top: $margin-regular;
+  button {
+    font-family: $font-fam;
+    font-size: $fs-regular;
+  }
 }

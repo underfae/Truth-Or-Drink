@@ -7,10 +7,9 @@ import { Router } from '@angular/router'
   styleUrls: ['./auth.component.scss'],
 })
 export class AuthComponent {
+  constructor(protected router: Router) {}
 
-  constructor( protected router: Router){}
-  
-  playGame(){
-    this.router.navigateByUrl("/config");
+  playGame(): void {
+    this.router.navigateByUrl('/config')
   }
 }

@@ -1,33 +1,37 @@
+@import "../../assets/styles/variables.scss";
+@import "../../assets/styles/colors.scss";
+
 table {
-    width: 100%;
+  width: 100%;
 }
-.mat-column-options{
+.mat-column-options {
   text-align: right;
 }
-img{
+img {
   height: 25px;
 }
 .wrapper {
   padding: 0 42px;
-  .game-header{
+  .game-header {
     display: flex;
-    margin: 24px 0;
+    margin: $margin-regular 0;
     justify-content: space-between;
-    .title{
+    .title {
       height: 10%;
-      font-family: "Bangers", Arial;
+      font-family: $font-fam;
       letter-spacing: 1px;
-      font-size: 32px;
-      color: #ef6e0e;
+      font-size: $fs-big;
+      color: $primary-color;
     }
-    .add-game{
-      padding-right: 32px;
-      font-size: 32px;
-      color: #ef6e0e;
+    .add-game {
+      padding-right: $margin-medium;
+      font-size: $fs-big;
+      color: $primary-color;
+      cursor: pointer;
     }
   }
 }
 
-i{
-  color: #ef6e0e;
+i {
+  color: $primary-color;
 }
